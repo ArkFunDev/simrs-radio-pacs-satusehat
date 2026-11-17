@@ -1,0 +1,17 @@
+# Secrets / local config
+config.local.php
+.env
+
+# Logs
+*.log
+auto_pull_pacs.log*
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependencies / misc
+vendor/
+node_modules/
