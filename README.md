@@ -73,6 +73,9 @@ Set `TOKEN_CACHE_DIR` in `config.local.php` to a private folder outside the web 
 
 ### Scheduled PACS pull (optional)
 
+**Windows (XAMPP):** import the ready-made task in [`scheduler/`](scheduler/README.md)
+(one task, runs at 12:00 and 23:59). **Linux:** use cron as below.
+
 ```bash
 # every hour (cron)
 0 * * * * php /path/to/diskom_auto_pull.php
@@ -94,7 +97,9 @@ php diskom_auto_pull.php --no_rawat=2026/01/01/000001
 | `diskom_radiologi.php`, `diskom_auto_pull.php` | Pull DICOM link and report from PACS |
 | **`imagingstudy.php`** | **ImagingStudy → SatuSehat (single + batch, token auto-refresh)** |
 | `form_imagingstudy.php` | Earlier manual form that also builds its own ServiceRequest payload |
-| `schema.sql`, `docs/` | Database additions, workflow notes, audit |
+| `scheduler/` | Windows Task Scheduler export for the auto pull |
+| `.htaccess` | Apache rules blocking logs, dumps and local config |
+| `schema.sql`, `docs/`, `tests/` | Database additions, workflow notes/audit, unit tests |
 
 ## Tests
 

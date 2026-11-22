@@ -1,0 +1,10 @@
+# Apache 2.4 (XAMPP). Requires AllowOverride to be enabled for this folder (XAMPP default).
+Options -Indexes
+
+# Never serve logs, database dumps, backups, scheduler exports or local config as downloads
+<FilesMatch "(\.(log|sql|xml|bak|dist|ps1)$|^config\.local.*)">
+    Require all denied
+</FilesMatch>
+
+# Test code and docs are not part of the web app
+RedirectMatch 404 ^/(?:.*/)?(tests|scheduler|\.github)(/|$)
