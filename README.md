@@ -1,5 +1,7 @@
 # SIMRS Radiology ↔ PACS ↔ SatuSehat
 
+[![PHP lint](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml/badge.svg)](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml)
+
 An add-on module for **SIMRS Khanza** (open-source hospital information system) that
 connects radiology orders to a **PACS** (DICOM) and automatically submits **ImagingStudy**
 resources to Indonesia's national health data platform **SatuSehat** (FHIR R4).
