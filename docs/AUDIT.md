@@ -24,6 +24,7 @@ environment, so no `php -l` / runtime test was run on the patched files — run
 | 13 | Low | UTF-8 BOM in `form_imagingstudy.php` (breaks `header()`/cookies), mixed CRLF/LF | BOM removed; `.gitattributes` |
 | 14 | Low | LIKE wildcards (`%`, `_`) from user filters not escaped; date filters not validated | `likeEscape()`, date regex |
 | 15 | Low | Session cookies without `HttpOnly`/`SameSite`/strict mode | Set in `config.php` |
+| 17 | Low | `getKodeSNOMEDRadiologi()` (legacy, unused in production) could never return the CT / USG codes: generic X-ray keywords such as `KEPALA`, `THORAX`, `ABDOMEN` matched first | Specific CT/USG/mammography keys moved first; regression tests added |
 | 16 | Docs | README pointed to `docs/flow.md` (file was in root) and a placeholder clone URL | Moved / corrected |
 
 ## Not changed (needs your decision / testing)

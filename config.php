@@ -228,6 +228,29 @@ function getKodeSNOMEDRadiologi($namaPemeriksaan) {
     // Format: 'KEYWORD' => 'SNOMED_CODE'
     $mapping = [
 
+        // ORDER MATTERS: the first keyword contained in the name wins, so the specific
+        // CT / USG / mammography keys must come BEFORE the generic X-ray keys below
+        // (otherwise 'CT SCAN KEPALA' matches 'KEPALA' and returns the skull X-ray code).
+
+        // === CT SCAN ===
+        'CT SCAN KEPALA'  => '303653007', // CT scan kepala
+        'CT SCAN HEAD'    => '303653007',
+        'CT HEAD'         => '303653007',
+        'CT SCAN THORAX'  => '418891003', // CT scan thorax
+        'CT THORAX'       => '418891003',
+        'CT SCAN ABDOMEN' => '303659006', // CT scan abdomen
+        'CT ABDOMEN'      => '303659006',
+
+        // === ULTRASOUND ===
+        'USG ABDOMEN'  => '241685008', // USG abdomen
+        'USG OBSTETRI' => '268445003', // USG kehamilan
+        'USG MAMMAE'   => '241679002', // USG payudara
+        'USG'          => '241685008', // USG umum
+
+        // === MAMMOGRAPHY ===
+        'MAMMOGRAFI' => '241055006',
+        'MAMMO'      => '241055006',
+
         // === CHEST X-RAY ===
         'THORAX' => '168537006', // Rontgen thorax (chest X-ray)
         'CHEST'  => '168537006',
@@ -269,25 +292,6 @@ function getKodeSNOMEDRadiologi($namaPemeriksaan) {
         'SINUS'     => '168532004',
         'MANDIBULA' => '168532004',
         'RAHANG'    => '168532004',
-
-        // === CT SCAN ===
-        'CT SCAN KEPALA'  => '303653007', // CT scan kepala
-        'CT SCAN HEAD'    => '303653007',
-        'CT HEAD'         => '303653007',
-        'CT SCAN THORAX'  => '418891003', // CT scan thorax
-        'CT THORAX'       => '418891003',
-        'CT SCAN ABDOMEN' => '303659006', // CT scan abdomen
-        'CT ABDOMEN'      => '303659006',
-
-        // === ULTRASOUND ===
-        'USG ABDOMEN'  => '241685008', // USG abdomen
-        'USG OBSTETRI' => '268445003', // USG kehamilan
-        'USG MAMMAE'   => '241679002', // USG payudara
-        'USG'          => '241685008', // USG umum
-
-        // === MAMMOGRAPHY ===
-        'MAMMOGRAFI' => '241055006',
-        'MAMMO'      => '241055006',
 
         // DEFAULT (when nothing matches)
         'DEFAULT' => '363680008' // Imaging procedure (generic)

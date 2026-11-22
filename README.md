@@ -1,6 +1,7 @@
 # SIMRS Radiology ↔ PACS ↔ SatuSehat
 
 [![PHP lint](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml/badge.svg)](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml)
+[![Unit tests](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/tests.yml/badge.svg)](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/tests.yml)
 
 An add-on module for **SIMRS Khanza** (open-source hospital information system) that
 connects radiology orders to a **PACS** (DICOM) and automatically submits **ImagingStudy**
@@ -21,7 +22,7 @@ rumah sakit; repositori ini adalah versi yang sudah dibersihkan dari data pribad
 | Radiology order → PACS (accession per examination) | Working in a live hospital environment |
 | Pull DICOM viewer link + radiologist report from PACS | Working (manual + cron) |
 | ImagingStudy → SatuSehat (single and batch) | Working in a live hospital environment |
-| Automated tests | Not yet (see [Roadmap](#roadmap)) |
+| Automated tests | Unit tests for helpers and payload builders + CI (see [Tests](#tests)); end-to-end tests not yet |
 | Public demo with synthetic data | Not yet (see [Roadmap](#roadmap)) |
 
 No patient data, credentials or hospital identifiers are in this repository. All secrets
@@ -95,6 +96,18 @@ php diskom_auto_pull.php --no_rawat=2026/01/01/000001
 | `form_imagingstudy.php` | Earlier manual form that also builds its own ServiceRequest payload |
 | `schema.sql`, `docs/` | Database additions, workflow notes, audit |
 
+## Tests
+
+No Composer or PHPUnit needed:
+
+```bash
+php tests/run.php
+```
+
+The application files are procedural, so `tests/bootstrap.php` extracts only the named
+pure functions from them (via PHP's tokenizer) instead of including whole pages. Production
+code is not modified for testing. CI runs lint and tests on PHP 8.0, 8.2 and 8.3.
+
 ## Security
 
 Implemented: login with role checks (`require_role`), hardened session cookies, same-origin
@@ -111,7 +124,8 @@ vulnerabilities as described in [SECURITY.md](SECURITY.md).
 
 - [ ] Docker Compose demo: PHP + MariaDB + Orthanc (open-source PACS) + synthetic data
 - [ ] Real DICOM series/instance UIDs and `numberOfSeries/Instances` in ImagingStudy
-- [ ] Unit tests for accession, payload builders and token cache
+- [x] Unit tests for accession, PACS response parsing and ImagingStudy payload
+- [ ] Tests for the token cache and database queries (needs a test database)
 - [ ] Per-form CSRF tokens on all pages; remove the legacy order path
 - [ ] English UI strings (i18n)
 
