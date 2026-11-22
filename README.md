@@ -1,10 +1,10 @@
 # SIMRS Radiology ↔ PACS ↔ SatuSehat
 
+[![PHP lint](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml/badge.svg)](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml)
+[![Unit tests](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/tests.yml/badge.svg)](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/tests.yml)
 [![Status: stable](https://img.shields.io/badge/status-stable-brightgreen)](#status)
 [![PHP 8.0+](https://img.shields.io/badge/PHP-8.0%2B-777bb4)](#requirements)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![PHP lint](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml/badge.svg)](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml)
-[![Unit tests](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/tests.yml/badge.svg)](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/tests.yml)
 
 An add-on module for **SIMRS Khanza** (open-source hospital information system) that
 connects radiology orders to a **PACS** (DICOM) and automatically submits **ImagingStudy**
