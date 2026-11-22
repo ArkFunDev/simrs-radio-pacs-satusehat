@@ -1,5 +1,8 @@
 # SIMRS Radiology ↔ PACS ↔ SatuSehat
 
+[![Status: stable](https://img.shields.io/badge/status-stable-brightgreen)](#status)
+[![PHP 8.0+](https://img.shields.io/badge/PHP-8.0%2B-777bb4)](#requirements)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![PHP lint](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml/badge.svg)](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/lint.yml)
 [![Unit tests](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/tests.yml/badge.svg)](https://github.com/ArkFunDev/simrs-radio-pacs-satusehat/actions/workflows/tests.yml)
 
@@ -17,11 +20,16 @@ rumah sakit; repositori ini adalah versi yang sudah dibersihkan dari data pribad
 
 ## Status
 
+**Stable.** The workflow (radiology order → PACS → ImagingStudy on SatuSehat) runs in daily
+production at a hospital, and ImagingStudy resources sent by this module are accepted by the
+SatuSehat platform. The remaining gaps are listed under [Roadmap](#roadmap) and in
+[docs/AUDIT.md](docs/AUDIT.md).
+
 | Item | State |
 |---|---|
-| Radiology order → PACS (accession per examination) | Working in a live hospital environment |
-| Pull DICOM viewer link + radiologist report from PACS | Working (manual + cron) |
-| ImagingStudy → SatuSehat (single and batch) | Working in a live hospital environment |
+| Radiology order → PACS (accession per examination) | Stable, in production |
+| Pull DICOM viewer link + radiologist report from PACS | Stable (manual + scheduled) |
+| ImagingStudy → SatuSehat (single and batch) | Stable, in production |
 | Automated tests | Unit tests for helpers and payload builders + CI (see [Tests](#tests)); end-to-end tests not yet |
 | Public demo with synthetic data | Not yet (see [Roadmap](#roadmap)) |
 
